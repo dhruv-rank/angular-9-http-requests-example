@@ -42,7 +42,10 @@ The HttpClient builtin service provides many advantages to Angular developers:
 ### 1.2 How to use HttpClient?
 
 - Import **HttpClientModule** in to `app.module.ts` after BrowserModule
+
 ```js
+import { HttpClientModule } from '@angular/common/http';
+
   imports: [
     BrowserModule,
     HttpClientModule
