@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-post',
@@ -16,75 +17,101 @@ export class PostComponent implements OnInit {
 
   getPosts() {
     // fetch posts using GET request
-    this.postService.getPosts().subscribe(posts => console.log(posts), error => console.log(error));
+    this.postService.getPosts();
 
     // fetch posts using GET request with typed response
-    this.postService.getPostsWthTypedResponse().subscribe(posts => console.log(posts), error => console.log(error));
+    this.postService.getPostsWthTypedResponse();
   }
 
-  getPostsError() {
+  downloadFile() {
+    this.postService.downloadFile();
+  }
+
+  handleError() {
     //handing error from API
-    this.postService.getPostsError().subscribe(data => console.log(data), error => console.log(error));
+    this.postService.handleErrors();
   }
 
   getPostByIdParam(id: number) {
     // fetch post by using GET request with query-parameter
-    this.postService.getPostByIdParam(id).subscribe(post => console.log(post[0]), error => console.log(error));
+    this.postService.getPostByIdParam(id);
   }
 
   getPostByIdPathVariable(id: number) {
     //fetch post by using GET request with path-variable
-    this.postService.getPostByIdPathVariable(id).subscribe(post => console.log(post), error => console.log(error));
+    this.postService.getPostByIdPathVariable(id);
   }
 
   getPostByMultipleParam() {
     //fetch post by using GET request with mulitple parameters
-    this.postService.getPostByMultipleParam().subscribe(post => console.log(post), error => console.log(error));
+    this.postService.getPostByMultipleParam();
   }
 
   getFullResponse() {
     //get full-response from API
-    this.postService.getFullResponse().subscribe(response => {
-      // Full resopnse
-      console.log(response);
-
-      //headers
-      console.log('Headers');
-      const headersKey: string[] = response.headers.keys();
-      headersKey.forEach(key => console.log(response.headers.getAll(key)));
-
-      //status 
-      console.log('Status Code', response.status);
-      console.log('Status Text', response.statusText);
-    }, error => console.log(error));
+    this.postService.getFullResponse();
   }
+
+  getResponseByEvents() {
+    this.postService.getResponseByEvents();
+  }
+
 
   updatePost() {
     //update post using PUT request without type
-    this.postService.updatePost().subscribe(updatedPost => window.alert(`Post updated : ${updatedPost['id']}`) , error => console.log(error));
+    this.postService.updatePost();
 
     //update post using PUT request with type
-    this.postService.updatePostWithType().subscribe(updatedPost => window.alert(`Post updated : ${updatedPost.id}`) , error => console.log(error));
+    this.postService.updatePostWithType();
+
+    //update post using PUT request with paramteres
+    this.postService.updatePostByParameter();
   }
 
   createNewPost() {
     //create post using POST request 
-    this.postService.createNewPost().subscribe(newPostId => console.log('New post created',newPostId), error => console.log(error));
+    this.postService.createNewPost();
+    this.postService.createPostWithParamters();
   }
 
   deletePost() {
     //delete post using DELETE request
-    this.postService.deletePost().subscribe(() => window.alert('Post deleted successfully'), error => console.log(error));
+    this.postService.deletePost();
+    this.postService.deletePostWithParameter();
   }
 
-  setHeaders() {
-    //set headers to the http request
-    this.postService.setHeaders().subscribe(post => console.log(post), error => console.log(error));
+  setHeaderToGet() {
+    //set headers to the GET request
+    this.postService.setHeaderToGet();
   }
 
+
+  setHeaderToPut() {
+    //set headers to the PUT request
+    this.postService.setHeaderToPut();
+  }
+
+  setHeaderToPost() {
+    //set headers to the POST request
+    this.postService.setHeaderToPost();
+  }
+
+  setHeaderToDelete() {
+    //set headers to the DELETE request
+    this.postService.setHeaderToDelete();
+  }
   requestAPI() {
     //create http request using requestAPI
-    this.postService.requseAPI().subscribe(posts => console.log(posts));
+    this.postService.requseAPI();
   }
+
+  uploadFile(inputFile) {
+    this.postService.uploadFile(inputFile);
+  }
+
+  passFormData(fileInput) {
+    this.postService.passFormData(fileInput);
+  }
+
 
 }

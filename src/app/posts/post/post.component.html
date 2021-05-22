@@ -1,12 +1,24 @@
 <div class="row container">
     <div class="btn-group m-2">
         <button class="btn btn-outline-primary" (click)="getPosts()">Get Posts</button>
-        <button class="btn btn-outline-primary" (click)="getPostsError()">Get Error</button>
+        <button class="btn btn-outline-primary" (click)="handleError()">Get Error</button>
         <button class="btn btn-outline-primary" (click)="getPostByIdParam(1)">Get Post 1</button>
-        <button class="btn btn-outline-primary" (click)="getPostByIdPathVariable(1)">Get Post 1 By Paht-Variable</button>
+        <button class="btn btn-outline-primary" (click)="getPostByIdPathVariable(1)">Get Post 1 By
+            Paht-Variable</button>
         <button class="btn btn-outline-primary" (click)="getPostByMultipleParam()">Get Post By Mulitple
             Parameters</button>
+        <button class="btn btn-outline-dark" (click)="downloadFile()">Get Image</button>
+    </div>
+    <div class="btn-group m-2">
+        <button class="btn btn-outline-dark" (click)="setHeaderToGet()">Set Header To Get</button>
+        <button class="btn btn-outline-dark" (click)="setHeaderToPut()">Set Header To Put</button>
+        <button class="btn btn-outline-dark" (click)="setHeaderToPost()">Set Header To Post</button>
+        <button class="btn btn-outline-dark" (click)="setHeaderToDelete()">Set Header To Delete</button>
+
+    </div>
+    <div class="btn-group m-2">
         <button class="btn btn-outline-primary" (click)="getFullResponse()">Get Full Response</button>
+        <button class="btn btn-outline-primary" (click)="getResponseByEvents()">Get Event Response</button>
     </div>
     <div class="btn-group m-2">
         <button class="btn btn-outline-warning" (click)="updatePost()">Update Post</button>
@@ -18,9 +30,10 @@
         <button class="btn btn-outline-danger" (click)="deletePost()">Delete Post</button>
     </div>
     <div class="btn-group m-2">
-        <button class="btn btn-outline-success" (click)="setHeaders()">Set Headers</button>
-    </div>
-    <div class="btn-group m-2">
         <button class="btn btn-outline-dark" (click)="requestAPI()">Request API</button>
     </div>
+</div>
+<div class="row">
+    <input type="file" name="image" (change)="uploadFile($event)" />
+    <input type="file" name="formdata" (change)="passFormData($event)" />
 </div>

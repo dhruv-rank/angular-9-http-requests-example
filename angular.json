@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "http-requests-example"
+  "defaultProject": "http-requests-example",
+  "cli": {
+    "analytics": false
+  }
 }
