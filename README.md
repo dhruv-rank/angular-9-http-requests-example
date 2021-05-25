@@ -44,10 +44,13 @@ The HttpClient builtin service provides many advantages to Angular developers:
 ```js
 import { HttpClientModule } from '@angular/common/http';
 
+@NgModule({
   imports: [
     BrowserModule,
     HttpClientModule
-  ],
+  ]
+})
+export class AppModule { }
 ```
 - Import Required Module in Service (post.serivce.ts)
 ```js
